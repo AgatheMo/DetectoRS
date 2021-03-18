@@ -261,26 +261,25 @@ test_pipeline = [
 ]
 data = dict(
     imgs_per_gpu=1,
-    workers_per_gpu=1,
+    workers_per_gpu=2,
     train=dict(
         type=dataset_type,
-        ann_file=data_root + 'annotations/instances_train2017.json',
-        img_prefix=data_root + 'train2017/',
-        seg_prefix=data_root + 'stuffthingmaps/train2017/',
+        ann_file=data_root + 'annotations/train_segmentation_SJ_K1.json',
+        img_prefix=data_root + 'images_SJ/'
         pipeline=train_pipeline),
     val=dict(
         type=dataset_type,
-        ann_file=data_root + 'annotations/instances_val2017.json',
-        img_prefix=data_root + 'val2017/',
+        ann_file=data_root + 'annotations/test_segmentation_SJ_K1.json',
+        img_prefix=data_root ++ 'images_SJ/'
         pipeline=test_pipeline),
     test=dict(
         type=dataset_type,
-        ann_file=data_root + 'annotations/instances_val2017.json',
-        img_prefix=data_root + 'val2017/',
+        ann_file=data_root + 'annotations/test_segmentation_SJ_K1.json',
+        img_prefix=data_root + 'images_SJ/'
         pipeline=test_pipeline))
 evaluation = dict(interval=1, metric=['bbox', 'segm'])
 # optimizer
-optimizer = dict(type='SGD', lr=0.02, momentum=0.9, weight_decay=0.0001)
+optimizer = dict(type='SGD', lr=0.0025, momentum=0.9, weight_decay=0.0001)
 optimizer_config = dict(grad_clip=dict(max_norm=35, norm_type=2))
 # learning policy
 lr_config = dict(
@@ -299,10 +298,10 @@ log_config = dict(
     ])
 # yapf:enable
 # runtime settings
-total_epochs = 40
+total_epochs = 30
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
-work_dir = './work_dirs/DetectoRS_mstrain_400_1200_x101_32x4d_40e.py'
+work_dir = './sortie/'
 load_from = None
 resume_from = None
 workflow = [('train', 1)]
