@@ -229,7 +229,7 @@ img_norm_cfg = dict(
 train_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(
-        type='LoadAnnotations', with_bbox=True, with_mask=True, with_seg=True),
+        type='LoadAnnotations', with_bbox=True, with_mask=True, with_seg=False),
     dict(
         type='Resize',
         img_scale=[(1333, 400), (1333, 1200)],
