@@ -265,17 +265,17 @@ data = dict(
     train=dict(
         type=dataset_type,
         ann_file=data_root + 'annotations/train_segmentation_SJ_K1.json',
-        img_prefix=data_root + 'images_SJ/'
+        img_prefix=data_root + 'images_SJ/',
         pipeline=train_pipeline),
     val=dict(
         type=dataset_type,
         ann_file=data_root + 'annotations/test_segmentation_SJ_K1.json',
-        img_prefix=data_root ++ 'images_SJ/'
+        img_prefix=data_root ++ 'images_SJ/',
         pipeline=test_pipeline),
     test=dict(
         type=dataset_type,
         ann_file=data_root + 'annotations/test_segmentation_SJ_K1.json',
-        img_prefix=data_root + 'images_SJ/'
+        img_prefix=data_root + 'images_SJ/',
         pipeline=test_pipeline))
 evaluation = dict(interval=1, metric=['bbox', 'segm'])
 # optimizer
